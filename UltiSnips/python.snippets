@@ -395,13 +395,10 @@ endsnippet
 
 snippet repr "methods implementing string representation"
 def __repr__(self):
-	${1:pass}
-
-def __str__(self):
-	${2:pass}
-
-def __unicode__(self):
-	${3:pass}
+	prettyString = "Printing attributes for ${1:ClassName} object:\n--------\n"
+	for k in self.__dict__:
+		prettyString += str(k)+"  :  "+str(self.__dict__[k])+"\n--------\n"
+return prettyString
 endsnippet
 
 
@@ -720,4 +717,40 @@ snippet de "debug string"
 print " #### *!*Debug*!* #### $1 ",${1}
 endsnippet
 
+snippet yn "Ask yes no question"
+if raw_input("Do you want to ${1}?[y/n]")=="y":
+	${2}
+else:
+	${3:exit()}	
+endsnippet
+
+snippet argp "Argparse skelton"
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("-v", "--verbosity", help="increase output verbosity", action="store_true", default=False)
+args = parser.parse_args()
+endsnippet
+
+snippet aa "add argparse argument"
+parser.add_argument("-${1:short_arg}", "--${2:long_arg}", default=${3:None}, help="${4:Help text}",${0})
+endsnippet
+
+snippet pp "print"
+print "${0}"
+endsnippet
+
+snippet template "Template for python file"
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+def main(args):
+	${0:pass}
+
+if __name__ == "__main__":
+	import argparse
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-v", "--verbosity", help="increase output verbosity", action="store_true", default=False)
+	args = parser.parse_args()
+	main(args)
+endsnippet
 # vim:ft=snippets:

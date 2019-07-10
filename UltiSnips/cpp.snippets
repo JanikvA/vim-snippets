@@ -116,8 +116,12 @@ snippet de "debug string"
 std::cout << " #### *!*Debug*!* #### $1 " << ${1} << std::endl;
 endsnippet
 
-snippet str "std string"
+snippet string "std string declaration"
 std::string ${1:tmpStr} = "${2}";
+endsnippet
+
+snippet str "std string type"
+std::string$0
 endsnippet
 
 snippet for "for loop (for)"
