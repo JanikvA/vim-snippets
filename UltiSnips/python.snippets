@@ -398,7 +398,7 @@ def __repr__(self):
 	prettyString = "Printing attributes for ${1:ClassName} object:\n--------\n"
 	for k in self.__dict__:
 		prettyString += str(k)+"  :  "+str(self.__dict__[k])+"\n--------\n"
-return prettyString
+	return prettyString
 endsnippet
 
 
@@ -714,7 +714,7 @@ $0
 endsnippet
 
 snippet de "debug string"
-print " #### *!*Debug*!* #### $1 ",${1}
+print(" #### *!*Debug*!* #### $1 "${1})
 endsnippet
 
 snippet yn "Ask yes no question"
@@ -726,7 +726,7 @@ endsnippet
 
 snippet argp "Argparse skelton"
 import argparse
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="${1:Description of script}")
 parser.add_argument("-v", "--verbosity", help="increase output verbosity", action="store_true", default=False)
 args = parser.parse_args()
 endsnippet
@@ -736,7 +736,7 @@ parser.add_argument("-${1:short_arg}", "--${2:long_arg}", default=${3:None}, hel
 endsnippet
 
 snippet pp "print"
-print "${0}"
+print(${0})
 endsnippet
 
 snippet template "Template for python file"
@@ -748,7 +748,7 @@ def main(args):
 
 if __name__ == "__main__":
 	import argparse
-	parser = argparse.ArgumentParser()
+	parser = argparse.ArgumentParser(description="${1:Description of script}")
 	parser.add_argument("-v", "--verbosity", help="increase output verbosity", action="store_true", default=False)
 	args = parser.parse_args()
 	main(args)

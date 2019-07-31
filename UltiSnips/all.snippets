@@ -97,9 +97,26 @@ snippet datetime "YYYY-MM-DD hh:mm" w
 endsnippet
 
 snippet todo "TODO comment" bw
-`!p snip.rv=get_comment_format()[0]` ${2:TODO}: $0${3: <${4:`!v strftime('%d-%m-%y')`}${5:, `!v g:snips_author`}>} `!p snip.rv=get_comment_format()[2]`
+`!p snip.rv=get_comment_format()[0]` ${2:TODO}: $0 <`!v strftime('%d-%m-%y')`, `!v g:snips_author`> `!p snip.rv=get_comment_format()[2]`
 endsnippet
 
+snippet mail "mail template"
+Dear ${1:name},
+
+$0
+
+Cheers,
+Janik
+endsnippet
+
+snippet mailG "mail template german"
+sehr geehrte(r) ${1:name},
+
+$0
+
+Mit freundlichen Grüßen,
+Janik von Ahnen
+endsnippet
 ##########
 #  Misc  #
 ##########
