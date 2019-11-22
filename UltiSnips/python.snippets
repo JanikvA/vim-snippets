@@ -742,13 +742,20 @@ endsnippet
 snippet template "Template for python file"
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
+
+"""
+${1:Description of script}
+"""
 
 def main(args):
 	${0:pass}
 
 if __name__ == "__main__":
 	import argparse
-	parser = argparse.ArgumentParser(description="${1:Description of script}")
+	parser = argparse.ArgumentParser(description=__doc__)
+	parser.add_argument('infile', help="Input file", type=argparse.FileType('r'))
+	parser.add_argument('-o', '--outfile', help="Output file", default=sys.stdout, type=argparse.FileType('w'))
 	parser.add_argument("-v", "--verbosity", help="increase output verbosity", action="store_true", default=False)
 	args = parser.parse_args()
 	main(args)
