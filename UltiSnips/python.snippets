@@ -754,8 +754,8 @@ import logging
 def comandline_argument_parser():
 	import argparse
 	parser = argparse.ArgumentParser(description=__doc__)
-	parser.add_argument("-l", "--logging-level", help="Logging level")
-	parser.add_argument("-f", "--logging-file", help="Logging file name")
+	parser.add_argument("--logging-level", default="warning", help="Logging level")
+	parser.add_argument("--logging-file", help="Logging file name")
 	return parser
 
 
@@ -780,6 +780,7 @@ if __name__ == "__main__":
 		format="%(asctime)s %(levelname)s: %(message)s",
 		datefmt="%Y-%m-%d %H:%M:%S",
 	)
+	logging.info(command_line_arguments)
 	sys.exit(main(command_line_arguments))
 endsnippet
 
