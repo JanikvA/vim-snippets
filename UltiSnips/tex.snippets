@@ -231,3 +231,17 @@ snippet m
 $\\${1:implies}$${0}
 endsnippet
 # vim:ft=snippets:
+
+snippet template
+\documentclass[a4paper, 12pt]{article}
+\usepackage{graphicx}
+\usepackage[
+	colorlinks=true,
+	urlcolor=blue,
+	linkcolor=green
+]{hyperref}
+
+\begin{document}
+${0:test}
+\end{document}
+endsnippet

@@ -748,18 +748,45 @@ ${1:Description of script}
 """
 
 import sys
+import logging
+
+
+def comandline_argument_parser():
+	import argparse
+	parser = argparse.ArgumentParser(description=__doc__)
+	parser.add_argument("-l", "--logging-level", help="Logging level")
+	parser.add_argument("-f", "--logging-file", help="Logging file name")
+	return parser
 
 
 def main(args):
 	${0:pass}
 
+
 if __name__ == "__main__":
-	import argparse
-	parser = argparse.ArgumentParser(description=__doc__)
-	# parser.add_argument('infile', help="Input file", type=argparse.FileType('r'))
-	# parser.add_argument('-o', '--outfile', help="Output file", default=sys.stdout, type=argparse.FileType('w'))
-	# parser.add_argument("-v", "--verbosity", help="increase output verbosity", action="store_true", default=False)
-	args = parser.parse_args()
-	main(args)
+	parser = comandline_argument_parser()
+	command_line_arguments = parser.parse_args()
+	LOGGING_LEVELS = {
+		"critical": logging.CRITICAL,
+		"error": logging.ERROR,
+		"warning": logging.WARNING,
+		"info": logging.INFO,
+		"debug": logging.DEBUG,
+	}
+	logging_level = LOGGING_LEVELS.get(command_line_arguments.logging_level, logging.NOTSET)
+	logging.basicConfig(
+		level=logging_level,
+		filename=command_line_arguments.logging_file,
+		format="%(asctime)s %(levelname)s: %(message)s",
+		datefmt="%Y-%m-%d %H:%M:%S",
+	)
+	sys.exit(main(command_line_arguments))
+endsnippet
+
+snippet dsimp "data science imports"
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 endsnippet
 # vim:ft=snippets:
