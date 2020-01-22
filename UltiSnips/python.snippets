@@ -779,8 +779,9 @@ if __name__ == "__main__":
 	logging.basicConfig(
 		level=logging_level,
 		filename=command_line_arguments.logging_file,
-		format="%(asctime)s %(levelname)s [%(filename)s:%(lineno)s - %(funcName)20s() ]: %(message)s",
-		datefmt="%Y-%m-%d %H:%M:%S",
+		# format="%(asctime)s %(levelname)s [%(filename)s:%(lineno)s - %(funcName)20s() ]: %(message)s",
+		format="%(levelname)s [%(filename)s:%(lineno)s - %(funcName)s() ]: %(message)s",
+		# datefmt="%Y-%m-%d %H:%M:%S",
 	)
 	logging.info(command_line_arguments)
 	sys.exit(main(command_line_arguments))
@@ -791,5 +792,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+endsnippet
+
+snippet pj "join path"
+os.path.join(${0:VISUAL})
 endsnippet
 # vim:ft=snippets:
