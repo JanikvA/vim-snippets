@@ -756,7 +756,7 @@ LOGGER = logging.getLogger(__name__)
 # fmt: off
 def comandline_argument_parser(parser=None):
 	if not parser:
-		parser = argparse.ArgumentParser(description=__doc__)
+		parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 	if __name__ == "__main__":
 		parser.add_argument("--loggers", nargs="*", default=[__name__], help="Changes the logging level of all the given loggers. 'root' is the global logger and __name__  is logger of this script")
 		parser.add_argument("--logging-level", default="warning", choices=["notset", "debug", "info", "warning", "error", "critical"], help="Logging level")
